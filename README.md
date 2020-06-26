@@ -8,15 +8,15 @@ Model: "model"
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to                     
 ==================================================================================================
-text_input (InputLayer)         [(None, 67)]         0                                            
+text_input (InputLayer)         [(None, 44)]         0                                            
 __________________________________________________________________________________________________
-embedding (Embedding)           (None, 67, 128)      4992        text_input[0][0]                 
+embedding (Embedding)           (None, 44, 128)      4992        text_input[0][0]                 
 __________________________________________________________________________________________________
-conv1d (Conv1D)                 (None, 66, 15)       3855        embedding[0][0]                  
+conv1d (Conv1D)                 (None, 43, 15)       3855        embedding[0][0]                  
 __________________________________________________________________________________________________
-conv1d_1 (Conv1D)               (None, 64, 15)       7695        embedding[0][0]                  
+conv1d_1 (Conv1D)               (None, 41, 15)       7695        embedding[0][0]                  
 __________________________________________________________________________________________________
-conv1d_2 (Conv1D)               (None, 62, 15)       11535       embedding[0][0]                  
+conv1d_2 (Conv1D)               (None, 39, 15)       11535       embedding[0][0]                  
 __________________________________________________________________________________________________
 global_max_pooling1d (GlobalMax (None, 15)           0           conv1d[0][0]                     
 __________________________________________________________________________________________________
@@ -49,6 +49,7 @@ Total params: 159,806
 Trainable params: 159,806
 Non-trainable params: 0
 __________________________________________________________________________________________________
+
 ```
 
 The model is combining three CNN with different kernels and an LSTM.
@@ -60,32 +61,30 @@ The benign domain is defined as: appeared in [Tranco](https://tranco-list.eu/) t
 ## Result
 Though simple, it's surprisingly accurate.  
 
-When the dataset is large (2197049 unique domain, trian : val : test = 0.72 : 0.08 : 0.20) reaching the accuracy of 99.43% in 10 epoch.  
+When the dataset is large (2197049 unique domain, trian : val : test = 0.72 : 0.08 : 0.20) reaching the accuracy of 99.38% in 13 epoch.  
 
 ```
               precision    recall  f1-score   support
 
-           0       0.99      1.00      0.99    198497
-           1       1.00      0.99      0.99    240913
+           0       0.99      1.00      0.99    198414
+           1       1.00      0.99      0.99    240996
 
     accuracy                           0.99    439410
    macro avg       0.99      0.99      0.99    439410
 weighted avg       0.99      0.99      0.99    439410
 ```
 
-When the dataset is relatively small (20000 unique domain, trian:val:test = 0.72 : 0.08 : 0.20) reaching the accuracy of 99.37% in 40 epoch.
+When the dataset is relatively small (20000 unique domain, trian:val:test = 0.72 : 0.08 : 0.20) reaching the accuracy of 98.19% in 55 epoch.
 
 ```
               precision    recall  f1-score   support
 
-           0       0.97      0.99      0.98      2006
-           1       0.99      0.97      0.98      1994
+           0       0.98      0.98      0.98      1973
+           1       0.98      0.98      0.98      2027
 
     accuracy                           0.98      4000
    macro avg       0.98      0.98      0.98      4000
 weighted avg       0.98      0.98      0.98      4000
-
-
 ```
 
 While far from state-of-the-art models, the model is still better than I expected.
