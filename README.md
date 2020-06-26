@@ -55,7 +55,7 @@ The model is combining three CNN with different kernels and an LSTM.
 
 ## Dataset
 The DGA dataset used in the repo comes from [360 Netlab](https://data.netlab.360.com/dga/), please refer to their site to get the newest dataset.  
-The benign domain is defined as: appear in [Tranco](https://tranco-list.eu/) top 1M for more than 30 days in the past 2 months, and not in known DGA dataset. Note that while many researchers use Alexa, I believe that [Tranco](https://tranco-list.eu/methodology) is much more robust.
+The benign domain is defined as: appeared in [Tranco](https://tranco-list.eu/) top 1M for more than 30 days in the past 2 months, and not in known DGA dataset. Note that while many researchers use Alexa, I believe that [Tranco](https://tranco-list.eu/methodology) is much more robust.
 
 ## Result
 Though simple, it's surprisingly accurate.  
@@ -87,6 +87,8 @@ weighted avg       0.98      0.98      0.98      4000
 
 
 ```
+
+While far from state-of-the-art models, the model is still better than I expected.
 
 ## Reference
 This project is heavily inspired by:
